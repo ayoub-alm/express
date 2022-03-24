@@ -9,3 +9,41 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+
+model Users {
+id Int     @id @default(autoincrement())
+nom String
+email String   @unique 
+password String 
+role String @default("AUTHOR")
+articles Articles []
+}
+
+model Articles {
+id Int     @id @default(autoincrement()) 
+titre String
+contenu String
+image String
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+published Boolean @default(false)
+author     Users        @relation(fields: [authorId], references: [id])
+authorId Int 
+categories Categories[]
+commentaires Commentaire[]
+}
+
+model Categories {
+ id Int  @id @default(autoincrement()) 
+ name String
+ articles Articles[]
+}
+
+model Commentaire {
+id Int @id @default(autoincrement())
+email String 
+contenu String
+articles  Articles   @relation(fields: [articleId], references: [id])
+articleId   Int
+}

@@ -8,6 +8,7 @@
 
 User.prototype.createUsers = function () {
     
+    
 };
 User.prototype.getUser = function () {
 
