@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../modules/users_module')
+const User = require('../models/users_module')
 const { PrismaClient } = require( '@prisma/client')
 const prisma = new PrismaClient();
 /* GET users listing. */
@@ -20,13 +20,13 @@ router.post('/add', function(req, res) {
 
 
 router.patch('/update/:id', function(req,res,next){
-
-  res.send('mis a jour des donneés de utlisateur est  bien effectuer ');
+    user = new User ();
+    user.updateUsers(req,res);  
 });
 
-router.delete('/delet/:id', function(req,res,next){
-
-  res.send(' l\'utlisateur est bien supprimé ');
+router.delete('/delete/:id', function(req,res,next){
+      user = User();
+      user.delete(req,res);
 });
 
 

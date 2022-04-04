@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+let Commentaire = require('../models/commentaires_model');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-
-  res.send('path pour les commentaire ');
+    res.send("comments route")
 });
 
 router.get('/:id', function(req, res, next) {
@@ -15,8 +15,8 @@ router.get('/:id', function(req, res, next) {
 
 
 router.post('/add', function(req, res, next) {
-
-  res.send('commentaire bien ajouté');
+      let commentaire = new Commentaire();
+      commentaire.addComment(req,res)
 });
 
 
