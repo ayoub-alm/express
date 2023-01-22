@@ -20,7 +20,7 @@ router.post('/add', function(req, res, next) {
 });
 
 
-router.patch('/update/:id', function(req,res,next){
+router.get('/update/:id', function(req,res,next){
 
   res.send('mis a jour bien effectuer  categorie id =  ' + req.params.id);
 });
